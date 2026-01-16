@@ -1,60 +1,46 @@
-#include <iostream>
-#include <thread>
 #include <random>
+#include <cstdint>
+#include <iostream>
 
-#include <cmath>
+#include <thread>
 
 int MapHeight = 1000;
 int MapWidth = 1000;
 
-using coordinate = std::array < int, 2 >;
-
-struct Player {
-
-  coordinate GetPosition() const {
-    return Position
-  }
-
-  int GetSize() const {
-    return Size;
-  }
-
-  bool CalculateCollisions(const Player& enemy) {
-    coordinate EnemyPosition = (enemy.GetPosition());
-    int EnemySize = (enemy.GetSize())
-
-    unsigned int distance = ((enemy.GetPosition()[0] - Position[0]) ** 2 )
-
-    if () return true;
-
-    return false;
-  }
-
-  private:
-  int Size = 100;
-
-  coordinate Position = {MapWidth / 2, MapHeight / 2};
-};
-
-
-
-
-
-
 unsigned short MaxPlayers = 10;
 unsigned short CurrentPlayers = 0;
-bool Running = true;
+
+volatile bool running = true;
+
+using coordinate = std::array < int, 2 >;
+
+int8_t generate_player_id(){
+  static unsigned PlayerID = 0; 
+
+  // place a lock here to provent a race condition
+  return PlayerID++;
+}
+
+void run_debugger(){
+    while (running){
+      std::string debug; 
+      std::cin >> debug;
+
+      if (debug == "exit") {running = false; break;}
+      else if (debug == "player count") {std::cout << "The number of players are: " << CurrentPlayers << std::endl; }
+    }
+}
 
 int main() {
+  std::thread debugging_thread(run_debugger);
 
-  while (Running) {
-    if (CurrentPlayers < MaxPlayers) {
-      // checking if connected
+  while (running){
+    // wait for connections from players
 
-      // creating a std::thread for the class & detach the thread
+    // run a seperate thread per player
 
-    }
   }
 
+  debugging_thread.join();
   return 0;
 }
