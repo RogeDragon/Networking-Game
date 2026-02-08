@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include <thread>
+#include "game"
 
 int MapHeight = 1000;
 int MapWidth = 1000;

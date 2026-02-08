@@ -10,7 +10,7 @@ client_code = $(client_location)//client.cpp
 server_code = $(server_location)//server.cpp
 
 #Organising all the 
-client_includes = -I "C://Dev//SDL//x86_64-w64-mingw32//include" -I"C://Dev//SDL_image//x86_64-w64-mingw32//include"
+client_includes = -I "C://Dev//SDL//x86_64-w64-mingw32//include" -I "C://Dev//SDL_image//x86_64-w64-mingw32//include"
 client_directories = -L "C://Dev//SDL//x86_64-w64-mingw32//lib" -L "C://Dev//SDL_image//x86_64-w64-mingw32//lib"
 client_libraries = $(client_includes) $(client_directories) -lSDL3 -lSDL3_image
 
