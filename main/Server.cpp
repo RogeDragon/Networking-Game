@@ -15,9 +15,7 @@ volatile bool running = true;
 using coordinate = std::array < int, 2 >;
 
 int8_t generate_player_id(){
-  static unsigned PlayerID = 0; 
-
-  // place a lock here to provent a race condition
+  static int8_t PlayerID = 0;
   return PlayerID++;
 }
 
@@ -27,7 +25,9 @@ void run_debugger(){
       std::cin >> debug;
 
       if (debug == "exit") {running = false; break;}
-      else if (debug == "player count") {std::cout << "The number of players are: " << CurrentPlayers << std::endl; }
+      else if (debug == "player count") {
+        std::cout << "The number of players are: " << CurrentPlayers << std::endl; 
+      }
     }
 }
 
@@ -42,5 +42,6 @@ int main() {
   }
 
   debugging_thread.join();
+
   return 0;
 }
