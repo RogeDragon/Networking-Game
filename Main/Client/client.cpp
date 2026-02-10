@@ -1,8 +1,9 @@
-
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 #include <iostream>
 #include <atomic>
+#include "player.h"
+
 
 class Game {
     private:
