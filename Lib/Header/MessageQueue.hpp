@@ -4,13 +4,6 @@
 #include <iostream>
 #include <utility>
 
-//commit
-struct Packet 
-{
-    void GetInfo();
-    private:
-};
-
 template <typename Data>
 class LinkedList
 {
@@ -32,6 +25,9 @@ public:
     LinkedList();
     void PushNode(Data InsertedData);
     void PopNode(Data &ReturnData);
-    void DisplayNodes();
     Node * GetTail();
+
+    //void DisplayNodes();
 };
+
+#include "MessageQueue.tpp"
