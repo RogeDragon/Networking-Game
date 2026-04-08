@@ -23,10 +23,16 @@ private:
 
 public:
     LinkedList();
+
+    LinkedList(const LinkedList &) = delete;
+    LinkedList& operator=(const LinkedList &) = delete;
+
+    LinkedList(LinkedList&& other);
+    LinkedList& operator=(LinkedList&& other);
+
     void PushNode(Data InsertedData);
     void PopNode(Data &ReturnData);
     Node * GetTail();
-
     //void DisplayNodes();
 };
 

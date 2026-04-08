@@ -1,6 +1,26 @@
 #include "MessageQueue.hpp"
 
 template <typename Data>
+LinkedList<Data>::LinkedList(LinkedList&& other)
+{
+    other.Head = std::move(Head);
+    other.Tail = Tail;
+    Tail = nullptr;
+}
+
+template <typename Data>
+LinkedList<Data>& LinkedList<Data>::operator=(LinkedList&& other)
+{
+    if (this != &other) // comparing the addresses
+    {
+        other.Head = std::move(Head); 
+        other.Tail = Tail;
+        Tail = nullptr;
+    }
+    return *this;
+}
+
+template <typename Data>
 LinkedList<Data>::LinkedList()
 {
     Head = std::make_unique<Node>(); //Making a Dummy Node For the Linked LIst
